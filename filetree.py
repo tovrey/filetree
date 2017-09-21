@@ -8,16 +8,16 @@ from sys import argv
 
 
 def list_files(startpath):
-    TREE = ''
-    for root,  dirs, files in os.walk(startpath):
+    tree = ''
+    for root, dirs, files in os.walk(startpath):
         level = root.replace(startpath, '').count(os.sep)
         indent = ' ' * 4 * (level)
-        ROOT = str('{}{}/'.format(indent,  os.path.basename(root)))
-        TREE += ROOT + '\n'
+        root = str('{}{}/'.format(indent, os.path.basename(root)))
+        tree += root + '\n'
         subindent = ' ' * 4 * (level + 1)
         for f in files:
-            TREE += str('{}{}\n'.format(subindent, f))
-    return TREE
+            tree += str('{}{}\n'.format(subindent, f))
+    return tree
 
 def main():
     parser = argparse.ArgumentParser(prog='FileTree')
